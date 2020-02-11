@@ -24,7 +24,7 @@ SECRET_KEY = 'u6znd_=+)cjw1wmjd!f%q(48-u!rzj7=bniyr%-r-(tdurtssg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -118,3 +118,11 @@ STATIC_URL = '/static/'
 
 # Channels
 ASGI_APPLICATION = 'sayhi.routing.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
